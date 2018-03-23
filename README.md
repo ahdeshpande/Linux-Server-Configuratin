@@ -4,6 +4,8 @@ This project is a guide to secure and set up a Linux server. This file also
 contains instructions that help to have one of web applications running live on a secure 
 a web server.
 
+An example of this execution is deployed [here](http://52.87.122.48/).
+
 #### Prerequisites
 - Linux server instance ([Amazon Lightsail](https://aws.amazon.com/lightsail/)
  is recommended)
@@ -100,6 +102,23 @@ the generated public keygen to the authorized keys file for the key to be
 authorized.
 ```
 sudo cat ~/.ssh/id_rsa_grader.pub >>  ~/.ssh/authorized_keys
+```
+
+7. Disable root login.
+```
+sudo vi /etc/ssh/sshd_config
+```
+Change this line:
+```
+#PermitRootLogin yes
+```
+Edit to this:
+```
+PermitRootLogin no
+```
+Restart service
+```
+sudo service ssh restart
 ```
 
 ### Project Deployment
